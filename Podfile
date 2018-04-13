@@ -7,5 +7,9 @@ target 'Mic Book' do
 
   # Pods for Mic Book
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'FirebaseUI/Storage'
+  pod 'Firebase/Storage'
+  pod 'Alamofire', '~> 4.7'
 
 end

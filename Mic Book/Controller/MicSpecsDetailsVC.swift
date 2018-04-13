@@ -13,10 +13,12 @@ class MicSpecsDetailsVC: UIViewController {
     let header = UIView()
     var offset_HeaderStop: CGFloat! // At this offset the Header stops its transformations
     
+    var mic: Microphone!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Sennheiser MD 421 II"
+        self.title = "\(mic.brand?.name ?? "") \(mic.name ?? "")"
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,29 +39,29 @@ extension MicSpecsDetailsVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MicSpecTableViewCell.reuseIdentifier, for: indexPath) as! MicSpecTableViewCell
         
         var specDescription = String()
-        var spec = String()
+        var spec: String?
         
         switch indexPath.row {
         case 0: specDescription = "Type of mic:"
-            spec = "Dynamic"
+            spec = mic.type?.rawValue
         case 1: specDescription = "Pad:"
-            spec = "none"
+            spec = mic.pad
         case 2: specDescription = "HPF or Roll-off:"
-            spec = "5 position bass roll off"
+            spec = mic.highPassFilter
         case 3: specDescription = "Polar Pattern:"
-            spec = "Cardioid"
+            spec = mic.polarPattern?.rawValue
         case 4: specDescription = "Max SPL:"
-            spec = "really high"
+            spec = mic.maxSpl
         case 5: specDescription = "Large or Small Diaphragm:"
-            spec = "Large Diaphragm and bloobidy blahbidy boo"
+            spec = mic.diaphragmSize?.rawValue
         case 6: specDescription = "Frequency Response:"
-            spec = "30Hz-17kHz"
+            spec = mic.frequencyResponse
         case 7: specDescription = "Phantom Power:"
-            spec = "none"
+        spec = mic.needsPhantomPower ? "Yes" : "No"
         case 8: specDescription = "Front or Side Address:"
-            spec = "Front address"
+        spec = mic.isSideAddress ? "Side Address" : "Front Address"
         case 9: specDescription = "Signal to Noise Ratio:"
-            spec = "?"
+            spec = mic.signalToNoiseRatio
         default: break
         }
         
@@ -85,7 +87,9 @@ extension MicSpecsDetailsVC: UITableViewDelegate {
                                       NSLayoutConstraint(item: micImageView, attribute: .bottom, relatedBy: .equal, toItem: header, attribute: .bottom, multiplier: 1, constant: 8),
                                       NSLayoutConstraint(item: micImageView, attribute: .leading, relatedBy: .equal, toItem: header, attribute: .leading, multiplier: 1, constant: 8),
                                       NSLayoutConstraint(item: micImageView, attribute: .trailing, relatedBy: .equal, toItem: header, attribute: .trailing, multiplier: 1, constant: 8)])
-        micImageView.image = #imageLiteral(resourceName: "Sennheiser MD421")
+        if let name = mic.name, let ext = mic.imageExt {
+            micImageView.sd_setImage(with: FirebaseService.shared.MICROPHONES_STORAGE_REF.child("\(name).\(ext)"))
+        }
         micImageView.clipsToBounds = true
         micImageView.contentMode = .scaleAspectFit
         return header
