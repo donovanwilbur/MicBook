@@ -21,7 +21,11 @@ class MicSpecsCollectionVC: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.title = "Mic Specifications"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
         
         fetchMicrophones()
     }

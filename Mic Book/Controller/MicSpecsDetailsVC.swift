@@ -49,7 +49,18 @@ extension MicSpecsDetailsVC: UITableViewDataSource {
         case 2: specDescription = "HPF or Roll-off:"
             spec = mic.highPassFilter
         case 3: specDescription = "Polar Pattern:"
-            spec = mic.polarPattern?.rawValue
+        var patterns = String()
+        if mic.polarPatterns.count == 1 {
+            patterns = mic.polarPatterns.first!.rawValue
+        } else {
+            for (i, pattern) in mic.polarPatterns.enumerated() {
+                patterns.append(contentsOf: pattern.rawValue)
+                if i != mic.polarPatterns.count - 1 {
+                    patterns.append(contentsOf: ", ")
+                }
+            }
+        }
+        spec = patterns
         case 4: specDescription = "Max SPL:"
             spec = mic.maxSpl
         case 5: specDescription = "Large or Small Diaphragm:"
