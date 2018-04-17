@@ -19,6 +19,7 @@ final class FirebaseService {
     //STORAGE REFERENCES
     let MICROPHONES_STORAGE_REF: StorageReference = Storage.storage().reference().child("microphones")
     let BRAND_STORAGE_REF: StorageReference = Storage.storage().reference().child("brand logos")
+    let FREQUENCY_RESPONSE_CURVES_REF: StorageReference = Storage.storage().reference().child("frequency response curves")
     
     //DATABASE REFERENCES
     let MICROPHONES_DB_REF = Database.database().reference().child("microphones")

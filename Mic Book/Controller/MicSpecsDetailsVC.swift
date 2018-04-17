@@ -11,6 +11,7 @@ import UIKit
 class MicSpecsDetailsVC: UIViewController {
 
     let header = UIView()
+    let footer = UIView()
     var offset_HeaderStop: CGFloat! // At this offset the Header stops its transformations
     
     var mic: Microphone!
@@ -43,11 +44,11 @@ extension MicSpecsDetailsVC: UITableViewDataSource {
         
         switch indexPath.row {
         case 0: specDescription = "Type of mic:"
-            spec = mic.type?.rawValue
+        spec = mic.type?.rawValue
         case 1: specDescription = "Pad:"
-            spec = mic.pad
+        spec = mic.pad
         case 2: specDescription = "HPF or Roll-off:"
-            spec = mic.highPassFilter
+        spec = mic.highPassFilter
         case 3: specDescription = "Polar Pattern:"
         var patterns = String()
         if mic.polarPatterns.count == 1 {
@@ -62,17 +63,17 @@ extension MicSpecsDetailsVC: UITableViewDataSource {
         }
         spec = patterns
         case 4: specDescription = "Max SPL:"
-            spec = mic.maxSpl
+        spec = mic.maxSpl
         case 5: specDescription = "Large or Small Diaphragm:"
-            spec = mic.diaphragmSize?.rawValue
+        spec = mic.diaphragmSize?.rawValue
         case 6: specDescription = "Frequency Response:"
-            spec = mic.frequencyResponse
+        spec = mic.frequencyResponse?.value
         case 7: specDescription = "Phantom Power:"
         spec = mic.needsPhantomPower ? "Yes" : "No"
         case 8: specDescription = "Front or Side Address:"
         spec = mic.isSideAddress ? "Side Address" : "Front Address"
         case 9: specDescription = "Signal to Noise Ratio:"
-            spec = mic.signalToNoiseRatio
+        spec = mic.signalToNoiseRatio
         default: break
         }
         
@@ -109,6 +110,45 @@ extension MicSpecsDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         offset_HeaderStop = tableView.bounds.width * 0.75
         return offset_HeaderStop
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        footer.backgroundColor = .white
+        let frequencyResponseImageView = UIImageView()
+        footer.addSubview(frequencyResponseImageView)
+        frequencyResponseImageView.clipsToBounds = true
+        frequencyResponseImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([ frequencyResponseImageView.topAnchor.constraint(equalTo: footer.topAnchor),
+                                      frequencyResponseImageView.leadingAnchor.constraint(equalTo: footer.leadingAnchor),
+                                      frequencyResponseImageView.trailingAnchor.constraint(equalTo: footer.trailingAnchor),
+                                      frequencyResponseImageView.bottomAnchor.constraint(equalTo: footer.bottomAnchor) ])
+        if let name = mic.frequencyResponse?.imageName, let ext = mic.frequencyResponse?.imageExt {
+            frequencyResponseImageView.sd_setImage(with: FirebaseService.shared.FREQUENCY_RESPONSE_CURVES_REF.child("\(name).\(ext)"))
+        }
+        frequencyResponseImageView.clipsToBounds = true
+        frequencyResponseImageView.contentMode = .scaleAspectFit
+        footer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showZoomableFrequencyResponseImage(_:))))
+        return footer
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if let imageView = footer.subviews.last as? UIImageView, let image = imageView.image {
+            let aspectRatio = image.size.height / image.size.width
+            return tableView.frame.width * aspectRatio
+        } else { return 200 }
+    }
+    
+    @objc func showZoomableFrequencyResponseImage(_ gesture: UITapGestureRecognizer) {
+        print("Tap tappity tap!")
+        guard let imageView = footer.subviews.last as? UIImageView, let image = imageView.image else { return }
+        
+        let zoomController = PhotoZoomController(nibName: "PhotoZoomController", bundle: nil)
+        
+        zoomController.modalTransitionStyle = .crossDissolve
+        zoomController.image = image
+        
+        navigationController?.present(zoomController, animated: true, completion: nil)
     }
 }
 

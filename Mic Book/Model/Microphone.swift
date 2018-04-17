@@ -12,7 +12,7 @@ class Microphone {
     
     var brand: Brand?
     var diaphragmSize: DiaphragmSize?
-    var frequencyResponse: String?
+    var frequencyResponse: FrequencyResponse?
     var highPassFilter: String?
     var maxSpl: String?
     var name: String?
@@ -41,9 +41,13 @@ class Microphone {
     }
     
     init?(withJSON json: [String: Any]) {
-        if let brandJSON = json[CodingKeys.brand.rawValue] as? [String: Any] { brand = Brand(withJSON: brandJSON) }
+        if let brandJSON = json[CodingKeys.brand.rawValue] as? [String: Any] {
+            brand = Brand(withJSON: brandJSON)
+        }
         if let diaphramSizeString = json[CodingKeys.diaphragmSize.rawValue] as? String { diaphragmSize = DiaphragmSize(rawValue: diaphramSizeString) }
-        frequencyResponse = json[CodingKeys.frequencyResponse.rawValue] as? String
+        if let frequencyResponseJSON = json[CodingKeys.frequencyResponse.rawValue] as? [String: Any] {
+            frequencyResponse = FrequencyResponse(withJSON: frequencyResponseJSON)
+        }
         highPassFilter = json[CodingKeys.highPassFilter.rawValue] as? String
         maxSpl = json[CodingKeys.maxSpl.rawValue] as? String
         name = json[CodingKeys.name.rawValue] as? String
@@ -55,7 +59,9 @@ class Microphone {
         }
         isSideAddress = json[CodingKeys.isSideAddress.rawValue] as! Bool
         signalToNoiseRatio = json[CodingKeys.signalToNoiseRatio.rawValue] as? String
-        if let typeString = json[CodingKeys.type.rawValue] as? String { type = MicrophoneType(rawValue: typeString) }
+        if let typeString = json[CodingKeys.type.rawValue] as? String {
+            type = MicrophoneType(rawValue: typeString)
+        }
         imageExt = json[CodingKeys.imageExt.rawValue] as? String
     }
 }
