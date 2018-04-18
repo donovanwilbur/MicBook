@@ -23,10 +23,7 @@ class MicSpecsCollectionVC: UIViewController {
         navigationItem.title = "Mic Specifications"
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
-        } else {
-            // Fallback on earlier versions
         }
-        
         fetchMicrophones()
     }
 
@@ -86,6 +83,7 @@ class MicrophoneGroup : NSObject {
     var microphones: [Microphone] = []
 }
 
+//MARK: - UICollectionViewDataSource Methods
 extension MicSpecsCollectionVC: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return micGroups.count
@@ -107,6 +105,7 @@ extension MicSpecsCollectionVC: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegate Methods
 extension MicSpecsCollectionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let mic = micGroups[indexPath.section].microphones[indexPath.row]
@@ -128,6 +127,7 @@ extension MicSpecsCollectionVC: UICollectionViewDelegate {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout Methods
 extension MicSpecsCollectionVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let contentWidth = collectionView.bounds.width - 32

@@ -17,6 +17,9 @@
 		258A5ECD201001E30021A0FD /* HomeScreenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258A5ECC201001E30021A0FD /* HomeScreenCard.swift */; };
 		258A5ECF201002700021A0FD /* HomeScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258A5ECE201002700021A0FD /* HomeScreenCollectionViewCell.swift */; };
 		258A5ED2201007DA0021A0FD /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258A5ED1201007DA0021A0FD /* DesignableView.swift */; };
+		259AD97F2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AD97E2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift */; };
+		259AD9812086F1C30067F0D0 /* InstrumentsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AD9802086F1C30067F0D0 /* InstrumentsCollectionVC.swift */; };
+		259AD9832086F2910067F0D0 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259AD9822086F2910067F0D0 /* Instrument.swift */; };
 		25A4587B208599790077092D /* FrequencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4587A208599790077092D /* FrequencyResponse.swift */; };
 		25A4587E2085A3C60077092D /* PhotoZoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4587C2085A3C60077092D /* PhotoZoomController.swift */; };
 		25A4587F2085A3C60077092D /* PhotoZoomController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A4587D2085A3C60077092D /* PhotoZoomController.xib */; };
@@ -43,6 +46,9 @@
 		258A5ECC201001E30021A0FD /* HomeScreenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCard.swift; sourceTree = "<group>"; };
 		258A5ECE201002700021A0FD /* HomeScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		258A5ED1201007DA0021A0FD /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		259AD97E2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCollectionViewCell.swift; sourceTree = "<group>"; };
+		259AD9802086F1C30067F0D0 /* InstrumentsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentsCollectionVC.swift; sourceTree = "<group>"; };
+		259AD9822086F2910067F0D0 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		25A4587A208599790077092D /* FrequencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyResponse.swift; sourceTree = "<group>"; };
 		25A4587C2085A3C60077092D /* PhotoZoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoZoomController.swift; sourceTree = "<group>"; };
 		25A4587D2085A3C60077092D /* PhotoZoomController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoZoomController.xib; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				25D441BF207EC43F00C644DB /* Microphone.swift */,
 				253E58C9208062CB00663A46 /* Brand.swift */,
 				25A4587A208599790077092D /* FrequencyResponse.swift */,
+				259AD9822086F2910067F0D0 /* Instrument.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,6 +131,7 @@
 				25BA13B92013A78900BA986C /* MicSpecsCollectionViewCell.swift */,
 				25BA13BB2013AA8700BA986C /* MicSpecsCollectionSectionHeaderView.swift */,
 				25BA13BF2013C3A900BA986C /* MicSpecTableViewCell.swift */,
+				259AD97E2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 				25BA13BD2013C2A500BA986C /* MicSpecsDetailsVC.swift */,
 				25A4587C2085A3C60077092D /* PhotoZoomController.swift */,
 				25A4587D2085A3C60077092D /* PhotoZoomController.xib */,
+				259AD9802086F1C30067F0D0 /* InstrumentsCollectionVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25A4587E2085A3C60077092D /* PhotoZoomController.swift in Sources */,
+				259AD97F2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift in Sources */,
 				25BA13C02013C3A900BA986C /* MicSpecTableViewCell.swift in Sources */,
 				25BA13BC2013AA8700BA986C /* MicSpecsCollectionSectionHeaderView.swift in Sources */,
 				258A5ECD201001E30021A0FD /* HomeScreenCard.swift in Sources */,
@@ -307,11 +317,13 @@
 				25D44369207ECB3800C644DB /* FirebaseService.swift in Sources */,
 				25BA13B82013A27E00BA986C /* MicSpecsCollectionVC.swift in Sources */,
 				258A5ED2201007DA0021A0FD /* DesignableView.swift in Sources */,
+				259AD9812086F1C30067F0D0 /* InstrumentsCollectionVC.swift in Sources */,
 				25A4587B208599790077092D /* FrequencyResponse.swift in Sources */,
 				253E58CA208062CB00663A46 /* Brand.swift in Sources */,
 				25D441C0207EC43F00C644DB /* Microphone.swift in Sources */,
 				25BA13BE2013C2A500BA986C /* MicSpecsDetailsVC.swift in Sources */,
 				258A5EB8200FFBB50021A0FD /* AppDelegate.swift in Sources */,
+				259AD9832086F2910067F0D0 /* Instrument.swift in Sources */,
 				25BA13BA2013A78900BA986C /* MicSpecsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

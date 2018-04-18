@@ -73,10 +73,10 @@ extension PhotoZoomController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateConstraintsForSize(view.bounds.size)
+        //updateConstraintsForSize(view.bounds.size)
         
-        if scrollView.zoomScale < minZoomScale {
-            dismiss(animated: true, completion: nil)
-        }
+//        if scrollView.zoomScale < minZoomScale {
+//            dismiss(animated: true, completion: nil)
+//        }
     }
 }

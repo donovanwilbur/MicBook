@@ -124,7 +124,7 @@ extension MicSpecsDetailsVC: UITableViewDelegate {
                                       frequencyResponseImageView.trailingAnchor.constraint(equalTo: footer.trailingAnchor),
                                       frequencyResponseImageView.bottomAnchor.constraint(equalTo: footer.bottomAnchor) ])
         if let name = mic.frequencyResponse?.imageName, let ext = mic.frequencyResponse?.imageExt {
-            frequencyResponseImageView.sd_setImage(with: FirebaseService.shared.FREQUENCY_RESPONSE_CURVES_REF.child("\(name).\(ext)"))
+            frequencyResponseImageView.sd_setImage(with: FirebaseService.shared.FREQUENCY_RESPONSE_CURVES_STORAGE_REF.child("\(name).\(ext)"))
         }
         frequencyResponseImageView.clipsToBounds = true
         frequencyResponseImageView.contentMode = .scaleAspectFit
