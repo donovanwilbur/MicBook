@@ -24,7 +24,11 @@ class MicSpecsCollectionVC: UIViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        fetchMicrophones()
+        if FirebaseService.shared.microphones.isEmpty {
+            fetchMicrophones()
+        } else {
+            organizeMicrophonesIntoGroups(FirebaseService.shared.microphones)
+        }
     }
 
     func fetchMicrophones() {

@@ -22,13 +22,29 @@ class InstrumentsCollectionVC: UIViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        fetchInstruments()
+        if FirebaseService.shared.microphones.isEmpty {
+            FirebaseService.shared.fetchMicrophones { (_) in
+                self.fetchInstruments()
+            }
+        } else {
+            fetchInstruments()
+        }
     }
     
     func fetchInstruments() {
         FirebaseService.shared.fetchInstruments { (instruments) in
             self.instruments = instruments
             self.collectionView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "instrumentDetailsVC" {
+            if let nextVC = segue.destination as? InstrumentDetailsVC {
+                if let instrument = sender as? Instrument {
+                    nextVC.instrument = instrument
+                }
+            }
         }
     }
 }
@@ -58,7 +74,7 @@ extension InstrumentsCollectionVC: UICollectionViewDataSource {
 extension InstrumentsCollectionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let instrument = instruments[indexPath.row]
-        performSegue(withIdentifier: "instrumentSamplesVC", sender: instrument)
+        performSegue(withIdentifier: "instrumentDetailsVC", sender: instrument)
     }
 }
 

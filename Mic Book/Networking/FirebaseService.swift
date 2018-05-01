@@ -16,6 +16,12 @@ final class FirebaseService {
     
     private init() { }
     
+    let audioSamplesBaseUrlString = "https://firebasestorage.googleapis.com/v0/b/mic-book.appspot.com/o/audio%20samples%2F"
+    let token = "?alt=media&token=0994722a-8835-458b-b78e-a8d2aed14060"
+    
+    var microphones: [Microphone] = []
+    var instruments: [Instrument] = []
+    
     //STORAGE REFERENCES
     let MICROPHONES_STORAGE_REF: StorageReference = Storage.storage().reference().child("microphones")
     let BRAND_STORAGE_REF: StorageReference = Storage.storage().reference().child("brand logos")
@@ -40,6 +46,7 @@ final class FirebaseService {
                     }
                 }
             }
+            self.microphones = mics
             completion(mics)
         }
     }
@@ -56,9 +63,24 @@ final class FirebaseService {
                     }
                 }
             }
+            self.instruments = instruments
             completion(instruments)
         }
     }
     
-    
+    func fetchAudioSamples(forType child: String, filterTerm term: String, completion: @escaping ([AudioSample]) -> Void) {
+     
+        AUDIO_SAMPLES_DB_REF.queryOrdered(byChild: child).queryEqual(toValue: term).observeSingleEvent(of: .value) { snapshot in
+            
+            var samples: [AudioSample] = []
+            for item in snapshot.children.allObjects as! [DataSnapshot] {
+                if let sampleInfo = item.value as? [String: Any] {
+                    if let sample = AudioSample(withJSON: sampleInfo) {
+                        samples.append(sample)
+                    }
+                }
+            }
+            completion(samples)
+        }
+    }
 }

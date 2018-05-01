@@ -14,13 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var homeScreenCards: [HomeScreenCard] = [ HomeScreenCard(image: #imageLiteral(resourceName: "Mic Specs"), title: "Microphone Specifications"),
-                                              HomeScreenCard(image: #imageLiteral(resourceName: "Audio Samples Instruments"), title: "Audio Samples Organized by Instrument"),
-                                              HomeScreenCard(image: #imageLiteral(resourceName: "Audio Samples Microphones"), title: "Audio Samples Organized by Microphone")]
+                                              HomeScreenCard(image: #imageLiteral(resourceName: "Audio Samples Instruments"), title: "Microphone Shootout")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseService.shared.fetchMicrophones { (_) in }
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

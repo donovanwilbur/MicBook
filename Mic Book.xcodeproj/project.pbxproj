@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		253E58CA208062CB00663A46 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253E58C9208062CB00663A46 /* Brand.swift */; };
+		255640872087E0C300CC6C47 /* InstrumentDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255640862087E0C300CC6C47 /* InstrumentDetailsVC.swift */; };
+		255640892087E6F000CC6C47 /* AudioSampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255640882087E6F000CC6C47 /* AudioSampleTableViewCell.swift */; };
+		2556408B2087E84400CC6C47 /* AudioSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2556408A2087E84400CC6C47 /* AudioSample.swift */; };
 		256DF626207EB58B00509A5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 256DF625207EB58B00509A5C /* GoogleService-Info.plist */; };
 		258A5EB8200FFBB50021A0FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258A5EB7200FFBB50021A0FD /* AppDelegate.swift */; };
 		258A5EBA200FFBB50021A0FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258A5EB9200FFBB50021A0FD /* ViewController.swift */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		253E58C9208062CB00663A46 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		255640862087E0C300CC6C47 /* InstrumentDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDetailsVC.swift; sourceTree = "<group>"; };
+		255640882087E6F000CC6C47 /* AudioSampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSampleTableViewCell.swift; sourceTree = "<group>"; };
+		2556408A2087E84400CC6C47 /* AudioSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSample.swift; sourceTree = "<group>"; };
 		256DF625207EB58B00509A5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		258A5EB4200FFBB50021A0FD /* Mic Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mic Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258A5EB7200FFBB50021A0FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 				253E58C9208062CB00663A46 /* Brand.swift */,
 				25A4587A208599790077092D /* FrequencyResponse.swift */,
 				259AD9822086F2910067F0D0 /* Instrument.swift */,
+				2556408A2087E84400CC6C47 /* AudioSample.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 				25BA13BB2013AA8700BA986C /* MicSpecsCollectionSectionHeaderView.swift */,
 				25BA13BF2013C3A900BA986C /* MicSpecTableViewCell.swift */,
 				259AD97E2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift */,
+				255640882087E6F000CC6C47 /* AudioSampleTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				25A4587C2085A3C60077092D /* PhotoZoomController.swift */,
 				25A4587D2085A3C60077092D /* PhotoZoomController.xib */,
 				259AD9802086F1C30067F0D0 /* InstrumentsCollectionVC.swift */,
+				255640862087E0C300CC6C47 /* InstrumentDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,13 +320,16 @@
 				259AD97F2086F15A0067F0D0 /* InstrumentCollectionViewCell.swift in Sources */,
 				25BA13C02013C3A900BA986C /* MicSpecTableViewCell.swift in Sources */,
 				25BA13BC2013AA8700BA986C /* MicSpecsCollectionSectionHeaderView.swift in Sources */,
+				255640892087E6F000CC6C47 /* AudioSampleTableViewCell.swift in Sources */,
 				258A5ECD201001E30021A0FD /* HomeScreenCard.swift in Sources */,
 				258A5ECF201002700021A0FD /* HomeScreenCollectionViewCell.swift in Sources */,
+				2556408B2087E84400CC6C47 /* AudioSample.swift in Sources */,
 				258A5EBA200FFBB50021A0FD /* ViewController.swift in Sources */,
 				25D44369207ECB3800C644DB /* FirebaseService.swift in Sources */,
 				25BA13B82013A27E00BA986C /* MicSpecsCollectionVC.swift in Sources */,
 				258A5ED2201007DA0021A0FD /* DesignableView.swift in Sources */,
 				259AD9812086F1C30067F0D0 /* InstrumentsCollectionVC.swift in Sources */,
+				255640872087E0C300CC6C47 /* InstrumentDetailsVC.swift in Sources */,
 				25A4587B208599790077092D /* FrequencyResponse.swift in Sources */,
 				253E58CA208062CB00663A46 /* Brand.swift in Sources */,
 				25D441C0207EC43F00C644DB /* Microphone.swift in Sources */,
